@@ -1,3 +1,4 @@
 .DS_Store
 test.rb
 coverage
+docs/domain_model-old.md
