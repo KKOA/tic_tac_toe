@@ -18,13 +18,20 @@ describe Game do
   end
 
   describe '#place_piece' do
-    context 'board empty' do
-      it 'return updated grid' do
+    context 'on board empty' do
+      it 'with valid coordinates' do
         row = 0
         col = 0
         expect_val = game.view_grid
         expect_val[row][col] = 'x'
-        expect(game.place_piece(row,col)).to eq expect_val
+        expect(game.place_piece(row, col)).to eq expect_val
+      end
+
+      it 'with invalid coordinates' do
+        row = 5
+        col = 3
+        expect_val = "#{row} , #{col} is an invalid cell. Please try again"
+        expect(game.place_piece(row, col)).to eq expect_val
       end
     end
   end
