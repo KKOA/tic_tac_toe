@@ -5,6 +5,7 @@ describe Game do
   let(:player2) { double(Player, name: 'mary') }
   let(:board) { Board.new }
   subject(:game) { described_class.new(board, player1, player2) }
+
   describe '#view_grid' do
     it 'has method' do
       expect(game).to respond_to(:view_grid)
@@ -13,6 +14,18 @@ describe Game do
     it 'return board' do
       expect_val = Array.new(3) { Array.new(3, '-') }
       expect(game.view_grid).to eq expect_val
+    end
+  end
+
+  describe '#place_piece' do
+    context 'board empty' do
+      it 'return updated grid' do
+        row = 0
+        col = 0
+        expect_val = game.view_grid
+        expect_val[row][col] = 'x'
+        expect(game.place_piece(row,col)).to eq expect_val
+      end
     end
   end
 end
