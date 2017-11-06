@@ -35,4 +35,9 @@ describe Game do
       end
     end
   end
+  describe '#current_player' do
+    it "return current_player's turn" do
+      expect(game.current_player.name).to eq player1.name
+    end
+  end
 end
