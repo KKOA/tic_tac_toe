@@ -1,7 +1,9 @@
 class Game
+  attr_reader :current_player
   def initialize(board, player1, player2)
     @board = board
     @players = [player1, player2]
+    @current_player = player1
   end
 
   def view_grid
