@@ -7,4 +7,9 @@ class Game
   def view_grid
     @board.grid
   end
+
+  def place_piece(x,y)
+    @board.grid[x][y] = 'x'
+    @board.grid
+  end
 end
