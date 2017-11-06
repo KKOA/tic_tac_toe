@@ -8,7 +8,9 @@ class Game
     @board.grid
   end
 
-  def place_piece(x,y)
+  def place_piece(x, y)
+    off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again"
+    return off_grid_msg if @board.on_grid?(x, y) == false
     @board.grid[x][y] = 'x'
     @board.grid
   end
