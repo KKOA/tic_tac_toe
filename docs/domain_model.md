@@ -57,19 +57,19 @@ I want an engaging interface.
 |---------|---------------------------------------------------------------------------------------------|
 | player  | name                                                                                        |
 | game    | place_piece <br>view_board <br>switch_player <br>current_player <br>game_over <br>result    |
-| board   | full? <br>available? <br>on_board <br>                                                       |
+| board   | full? <br>available? <br>on_board <br>                                                      |
 
 ## How our objects will use messages to communicate  with one another
 
 player  <-- name --> name
 
-game    <-- place_piece --> piece capture or not
-game    <-- view_board -->  board
-game    <-- switch player
-game    <-- current_player --> player
-game    <-- game_over? --> true/false
+game    <-- place_piece --> piece capture or not<br>
+game    <-- view_board -->  board<br>
+game    <-- switch player<br>
+game    <-- current_player --> player<br>
+game    <-- game_over? --> true/false<br>
 game  <-- result --> outcome
 
-board <-- full? --> true/false
-board <-- available? --> true/false
+board <-- full? --> true/false<br>
+board <-- available? --> true/false<br>
 board <-- on_board --> true/false
