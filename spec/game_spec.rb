@@ -18,8 +18,7 @@ describe Game do
       it 'with valid coordinates' do
         row = 0
         col = 0
-        expect_val = game.view_grid
-        expect_val[row][col] = 'x'
+        expect_val = [['x','-','-'],['-','-','-'],['-','-','-']]
         expect(game.place_piece(row, col)).to eq expect_val
         expect(game.current_player.name).to eq player2.name
       end
@@ -27,9 +26,28 @@ describe Game do
       it 'with invalid coordinates' do
         row = 5
         col = 3
-        expect_val = "#{row} , #{col} is an invalid cell. Please try again"
+        expect_val = "#{row} , #{col} is an invalid cell. Please try again."
         expect(game.place_piece(row, col)).to eq expect_val
       end
+    end
+    context 'Other player turn' do
+      it 'with valid coordinates' do
+        row = 0
+        col = 0
+        game.place_piece(row, col)
+        row = 1
+        expect_val = [['x','-','-'],['o','-','-'],['-','-','-']]
+        expect(game.place_piece(row, col)).to eq expect_val
+        p game.view_grid
+      end
+      # it 'with valid coordinates' do
+      #   row = 0
+      #   col = 1
+      #   expect_val = "#{row} , #{col} is already taken. Please select nother cell"
+      #   expect_val[row][col] = 'o'
+      #   expect(game.place_piece(row, col)).to eq expect_val
+      #   expect(game.current_player.name).to eq player1.name
+      # end
     end
   end
   describe '#current_player' do
