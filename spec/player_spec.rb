@@ -9,4 +9,10 @@ describe Player do
       expect(player1.name).to eq 'Tom'
     end
   end
+  describe '#flag' do
+    it 'return player name' do
+      player1.flag = 'x'
+      expect(player1.flag).to eq 'x'
+    end
+  end
 end
