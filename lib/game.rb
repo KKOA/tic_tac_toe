@@ -14,6 +14,15 @@ class Game
     off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again"
     return off_grid_msg if @board.on_grid?(x, y) == false
     @board.grid[x][y] = 'x'
+    swap_turn
     @board.grid
+  end
+
+  def swap_turn
+    @current_player = opponent(current_player)
+  end
+
+  def opponent(current_player)
+    @players.reject { |player| player == current_player }.first
   end
 end
