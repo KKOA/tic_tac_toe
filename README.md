@@ -49,6 +49,6 @@ After reading up on the rules of the game. I started this challenge by creating 
 
 [flow chart of game logic]
 
-Afterwards, I created a [domain model](docs/doman_model.md) containing my user stories that I had pulled out of the game rules and set about writing my test.
+Afterwards, I created a [domain model](/docs/domain_model.md) containing my user stories that I had pulled out of the game rules and set about writing my test.
 
 I then setup writing my initial code and refactoring both the test and the code as I went along.
