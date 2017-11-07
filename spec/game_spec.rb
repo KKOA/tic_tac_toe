@@ -16,8 +16,8 @@ describe Game do
   end
 
   describe '#claim' do
-    context 'on board empty' do
-      it 'with valid coordinates' do
+    context 'board empty' do
+      it 'player1 claim cell' do
         row = 0
         col = 0
         expect_val = [['x', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
@@ -25,33 +25,35 @@ describe Game do
         expect(game.current_player.name).to eq player2.name
       end
 
-      it 'with invalid coordinates' do
+      it 'invalid coordinates' do
         row = 5
         col = 3
-        expect_val = "#{row} , #{col} is an invalid cell. Please try again."
+        expect_val = "#{row}, #{col} is an invalid cell. Please try again."
         expect(game.claim(row, col)).to eq expect_val
       end
     end
+
     context 'Other player turn' do
-      it 'with valid coordinates' do
+      it 'player2 claim cell' do
         row = 0
         col = 0
         game.claim(row, col)
         row = 1
         expect_val = [['x', '-', '-'], ['o', '-', '-'], ['-', '-', '-']]
         expect(game.claim(row, col)).to eq expect_val
-        p game.view_grid
       end
-      it 'with coordinates taken' do
+
+      it 'cell already taken' do
         row = 0
         col = 1
         game.claim(row, col)
-        expect_val = "#{row} , #{col} is already taken. Please select another cell"
+        expect_val = "#{row}, #{col} is already taken. Please select another cell"
         expect(game.claim(row, col)).to eq expect_val
         expect(game.current_player.name).to eq player2.name
       end
     end
   end
+
   describe '#current_player' do
     it "return current_player's turn" do
       expect(game.current_player.name).to eq player1.name

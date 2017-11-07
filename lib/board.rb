@@ -8,7 +8,7 @@ class Board
     !!(@grid[x] && @grid[x][y])
   end
 
-  def avaliable?(x,y)
+  def avaliable?(x, y)
     @grid[x][y] == '-'
   end
 

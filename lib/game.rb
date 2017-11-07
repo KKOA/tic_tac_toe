@@ -11,9 +11,9 @@ class Game
   end
 
   def claim(x, y)
-    off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again."
+    off_grid_msg = "#{x}, #{y} is an invalid cell. Please try again."
     return off_grid_msg if @board.on_grid?(x, y) == false
-    taken_msg = "#{x} , #{y} is already taken. Please select another cell"
+    taken_msg = "#{x}, #{y} is already taken. Please select another cell"
     return taken_msg if @board.avaliable?(x, y) == false
     @board.grid[x][y] = @current_player.flag
     swap_turn
