@@ -48,4 +48,19 @@ describe Board do
       end
     end
   end
+
+  describe '#full' do
+    context 'grid empty' do
+      it 'return false' do
+        expect(board.full?).to eq false
+      end
+    end
+
+    context 'grid full' do
+      it 'return true' do
+        board.grid.map!{ |row| row.map{ |col| 'o' } }
+        expect(board.full?).to eq true
+      end
+    end
+  end
 end
