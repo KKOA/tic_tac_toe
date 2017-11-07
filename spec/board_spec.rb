@@ -11,6 +11,7 @@ describe Board do
       expect(board.grid).to eq expect_val
     end
   end
+
   describe '#on_grid' do
     context 'coordinates on the grid' do
       row = 0
@@ -19,11 +20,31 @@ describe Board do
         expect(board.on_grid?(row, col)).to eq true
       end
     end
+
     context 'coordinates off the grid' do
       row = 3
       col = 3
       it 'return false' do
         expect(board.on_grid?(row, col)).to eq false
+      end
+    end
+  end
+
+  describe '#avaliable' do
+    context 'cell not taken' do
+      it 'return true' do
+        row = 0
+        col = 0
+        expect(board.avaliable?(row,col)).to eq true
+      end
+    end
+
+    context 'cell already claimed' do
+      it 'return false' do
+        row = 0
+        col = 0
+        board.grid[row][col] ='x'
+        expect(board.avaliable?(row,col)).to eq false
       end
     end
   end
