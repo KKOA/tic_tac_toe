@@ -10,10 +10,12 @@ class Game
     @board.grid
   end
 
-  def place_piece(x, y)
+  def claim(x, y)
     off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again."
     return off_grid_msg if @board.on_grid?(x, y) == false
-    @board.grid[x][y] = 'x'
+    taken_msg = "#{x} , #{y} is already taken. Please select another cell"
+    return taken_msg if @board.avaliable?(x, y) == false
+    @board.grid[x][y] = @current_player.flag
     swap_turn
     @board.grid
   end
