@@ -11,7 +11,7 @@ class Game
   end
 
   def place_piece(x, y)
-    off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again"
+    off_grid_msg = "#{x} , #{y} is an invalid cell. Please try again."
     return off_grid_msg if @board.on_grid?(x, y) == false
     @board.grid[x][y] = 'x'
     swap_turn
@@ -19,10 +19,14 @@ class Game
   end
 
   def swap_turn
-    @current_player = opponent(current_player)
+    @current_player = opponent(@current_player)
+    @current_player
   end
 
   def opponent(current_player)
-    @players.reject { |player| player == current_player }.first
+    if current_player.name == @players[0].name
+      return @players[1]
+    end
+    @players[0]
   end
 end
